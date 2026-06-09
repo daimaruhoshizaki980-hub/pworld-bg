@@ -1,3 +1,1 @@
-window.addEventListener('load', function() {
-    document.body.style.backgroundColor = 'red';
-});
+alert('bg.js loaded');
