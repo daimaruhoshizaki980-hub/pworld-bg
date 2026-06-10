@@ -1,19 +1,24 @@
 window.addEventListener('load', function() {
 
+    // 元々の背景画像を取得
+    var originalBg = getComputedStyle(document.body).backgroundImage;
+
+    // 元背景＋左右画像
     document.body.style.backgroundImage =
+        originalBg + "," +
         "url('https://daimaruhoshizaki980-hub.github.io/pworld-bg/左戦国.jpg')," +
         "url('https://daimaruhoshizaki980-hub.github.io/pworld-bg/右戦国.jpg')";
 
     document.body.style.backgroundRepeat =
-        "no-repeat, no-repeat";
+        "repeat, no-repeat, no-repeat";
 
     document.body.style.backgroundPosition =
-        "left top, right top";
+        "center top, left top, right top";
 
     document.body.style.backgroundSize =
-        "420px auto, 420px auto";
+        "auto, 420px auto, 420px auto";
 
     document.body.style.backgroundAttachment =
-        "fixed, fixed";
+        "scroll, fixed, fixed";
 
 });
