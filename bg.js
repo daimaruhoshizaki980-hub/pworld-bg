@@ -1,24 +1,26 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
 
-    // 元々の背景画像を取得
-    var originalBg = getComputedStyle(document.body).backgroundImage;
+    // 左画像
+    var left = document.createElement('img');
+    left.src = 'https://daimaruhoshizaki980-hub.github.io/pworld-bg/左戦国.jpg';
+    left.style.position = 'fixed';
+    left.style.left = '20px';
+    left.style.top = '0';
+    left.style.width = '420px';
+    left.style.zIndex = '999';
+    left.style.pointerEvents = 'none';
 
-    // 元背景＋左右画像
-    document.body.style.backgroundImage =
-        originalBg + "," +
-        "url('https://daimaruhoshizaki980-hub.github.io/pworld-bg/左戦国.jpg')," +
-        "url('https://daimaruhoshizaki980-hub.github.io/pworld-bg/右戦国.jpg')";
+    // 右画像
+    var right = document.createElement('img');
+    right.src = 'https://daimaruhoshizaki980-hub.github.io/pworld-bg/右戦国.jpg';
+    right.style.position = 'fixed';
+    right.style.right = '20px';
+    right.style.top = '0';
+    right.style.width = '420px';
+    right.style.zIndex = '999';
+    right.style.pointerEvents = 'none';
 
-    document.body.style.backgroundRepeat =
-        "repeat, no-repeat, no-repeat";
-
-    document.body.style.backgroundPosition =
-        "center top, left top, right top";
-
-    document.body.style.backgroundSize =
-        "auto, 420px auto, 420px auto";
-
-    document.body.style.backgroundAttachment =
-        "scroll, fixed, fixed";
+    document.body.appendChild(left);
+    document.body.appendChild(right);
 
 });
