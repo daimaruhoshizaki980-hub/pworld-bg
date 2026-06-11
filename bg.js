@@ -1,48 +1,48 @@
 window.addEventListener('load', function () {
 
+    // 本文テーブル取得
     var infoTable = document.querySelector('table[name="info"]');
-    var leftMenu = document.getElementById('pwSideMenu-left');
-    var rightMenu = document.getElementById('pwSideMenu-right');
+    if (!infoTable) return;
 
     // 左画像
     var left = document.createElement('img');
     left.src = 'https://daimaruhoshizaki980-hub.github.io/pworld-bg/左戦国.jpg';
-    left.style.position = 'fixed';
-    left.style.top = '0';
-    left.style.left = 'calc(50% - 820px)';
-    left.style.width = '420px';
-    left.style.pointerEvents = 'none';
-    left.style.zIndex = '10';
+    left.style.cssText = [
+        'position:fixed',
+        'top:0',
+        'left:calc(50% - 820px)',
+        'width:420px',
+        'pointer-events:none',
+        'z-index:0'
+    ].join(';');
 
     // 右画像
     var right = document.createElement('img');
     right.src = 'https://daimaruhoshizaki980-hub.github.io/pworld-bg/右戦国.jpg';
-    right.style.position = 'fixed';
-    right.style.top = '0';
-    right.style.left = 'calc(50% + 400px)';
-    right.style.width = '420px';
-    right.style.pointerEvents = 'none';
-    right.style.zIndex = '10';
+    right.style.cssText = [
+        'position:fixed',
+        'top:0',
+        'left:calc(50% + 400px)',
+        'width:420px',
+        'pointer-events:none',
+        'z-index:0'
+    ].join(';');
 
-    // 本文を左右画像より前へ
-    if (infoTable) {
-        infoTable.style.position = 'relative';
-        infoTable.style.zIndex = '20';
-    }
+    // 左右画像をまとめるコンテナ
+    var sideBg = document.createElement('div');
+    sideBg.style.cssText = [
+        'position:relative',
+        'z-index:0'
+    ].join(';');
 
-    // 左サイドメニューを最前面へ
-    if (leftMenu) {
-        leftMenu.style.position = 'relative';
-        leftMenu.style.zIndex = '30';
-    }
+    sideBg.appendChild(left);
+    sideBg.appendChild(right);
 
-    // 右サイドメニューを最前面へ
-    if (rightMenu) {
-        rightMenu.style.position = 'relative';
-        rightMenu.style.zIndex = '30';
-    }
+    // 本文を画像より前にする
+    infoTable.style.position = 'relative';
+    infoTable.style.zIndex = '1';
 
-    document.body.appendChild(left);
-    document.body.appendChild(right);
+    // 本文の直前に画像コンテナを挿入
+    infoTable.parentNode.insertBefore(sideBg, infoTable);
 
 });
