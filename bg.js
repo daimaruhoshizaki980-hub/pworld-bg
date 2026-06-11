@@ -1,7 +1,8 @@
 window.addEventListener('load', function () {
 
-    var sideMenu = document.getElementById('pwSideMenu-left');
-    if (!sideMenu) return;
+    var infoTable = document.querySelector('table[name="info"]');
+    var leftMenu = document.getElementById('pwSideMenu-left');
+    var rightMenu = document.getElementById('pwSideMenu-right');
 
     // 左画像
     var left = document.createElement('img');
@@ -11,6 +12,7 @@ window.addEventListener('load', function () {
     left.style.left = 'calc(50% - 820px)';
     left.style.width = '420px';
     left.style.pointerEvents = 'none';
+    left.style.zIndex = '10';
 
     // 右画像
     var right = document.createElement('img');
@@ -20,20 +22,24 @@ window.addEventListener('load', function () {
     right.style.left = 'calc(50% + 400px)';
     right.style.width = '420px';
     right.style.pointerEvents = 'none';
+    right.style.zIndex = '10';
 
-    // レイヤー順
-    left.style.zIndex = '1';
-    right.style.zIndex = '1';
-
-    // サイドメニューを前面
-    sideMenu.style.position = 'relative';
-    sideMenu.style.zIndex = '10';
-
-    // 本文も前面
-    var infoTable = document.querySelector('table[name="info"]');
+    // 本文を左右画像より前へ
     if (infoTable) {
         infoTable.style.position = 'relative';
-        infoTable.style.zIndex = '5';
+        infoTable.style.zIndex = '20';
+    }
+
+    // 左サイドメニューを最前面へ
+    if (leftMenu) {
+        leftMenu.style.position = 'relative';
+        leftMenu.style.zIndex = '30';
+    }
+
+    // 右サイドメニューを最前面へ
+    if (rightMenu) {
+        rightMenu.style.position = 'relative';
+        rightMenu.style.zIndex = '30';
     }
 
     document.body.appendChild(left);
